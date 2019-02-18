@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">QuotationShake</string>
+    <string name="button1">GET QUOTATIONS</string>
+    <string name="button2">FAVOURITE QUOTATIONS</string>
+    <string name="button3">SETTINGS</string>
+    <string name="button4">ABOUT</string>
+    <string name="aboutMe">QUOTATIONSHAKE by Joanna Pudelko joapu@inf.upv.es DADM 2019</string>
+    <string name="getQuote">Hello! Press REFRESH to get a new quotation</string>
+    <string name="refreshQuote">“Be the change that you wish to see in the world.” </string>
+    <string name="author">~ Mahatma Gandhi </string>
+    <string name="authorButton">AUTHOR INFO </string>
+    <string name="settings">Settings </string>
+    <string name="nameTitle">Name that indeficates the user </string>
+    <string name="textLanguage">Quotations will be received in the selected language </string>
+
+    //Settings
+    <string name="insertUserName">Insert your name </string>
+    <string-array name="chooseLanguage">
+        <item>English</item>
+        <item>Polish</item>
+        <item>Spanish</item>
+        <item>Italian</item>
+        <item>German</item>
+        <item>German</item>
+        <item>Ukrainian</item>
+    </string-array>
+    <string name="radioTitle">Web requested will be performed using the selected HTTP method </string>
+    <string name="getRadioButton">GET </string>
+    <string name="postRadioButton">POST </string>
+</resources>
