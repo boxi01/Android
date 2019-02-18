@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +21,15 @@ public class favouriteQuotes extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                refreshQuote();
+                infoAboutAuthor();
             }
         });
     }
 
-    public void refreshQuote(){
-        Intent intent = new Intent(this, authorInfo.class);
+    public void infoAboutAuthor(){
+        String website = "https://pl.wikipedia.org/wiki/Mahatma_Gandhi";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(website));
         startActivity(intent);
     }
 }

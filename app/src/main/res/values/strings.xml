@@ -4,7 +4,11 @@
     <string name="button2">FAVOURITE QUOTATIONS</string>
     <string name="button3">SETTINGS</string>
     <string name="button4">ABOUT</string>
-    <string name="aboutMe">QUOTATIONSHAKE by Joanna Pudelko joapu@inf.upv.es DADM 2019</string>
+
+    //About
+    <string name="aboutMe"><p style="text-align:center"><strong>QUOTATIONSHAKE</strong> by Joanna Pudelko and Pawel Maslowski joapu@inf.upv.es DADM 2019</p></string>
+
+    //Generate quotation
     <string name="getQuote">Hello! Press REFRESH to get a new quotation</string>
     <string name="refreshQuote">“Be the change that you wish to see in the world.” </string>
     <string name="author">~ Mahatma Gandhi </string>
