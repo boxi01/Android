@@ -6,15 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
-public class FavouriteQuotes extends AppCompatActivity {
+public class FavouriteActivity extends AppCompatActivity {
 
     private Button authorButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favourite_quotes);
+        setContentView(R.layout.activity_favourite);
 
         authorButton = (Button) findViewById(R.id.authorButton);
         authorButton.setOnClickListener(new View.OnClickListener(){
@@ -27,9 +26,12 @@ public class FavouriteQuotes extends AppCompatActivity {
     }
 
     public void infoAboutAuthor(){
-        String website = "https://pl.wikipedia.org/wiki/Mahatma_Gandhi";
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(website));
-        startActivity(intent);
+
+        String url = "https://pl.wikipedia.org/wiki/Mahatma_Gandhi";
+        Uri webpage = Uri.parse(url);
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+        if(webIntent.resolveActivity(getPackageManager())!=null){
+            startActivity(webIntent);
+        }
     }
 }

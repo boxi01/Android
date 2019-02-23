@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FavouriteQuotes"
+            android:name=".FavouriteActivity"
             android:label="@string/favQ" />
         <activity
             android:name=".SettingsActivity"

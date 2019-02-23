@@ -60,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void favouriteQuotes(){
-        Intent intent = new Intent(this, FavouriteQuotes.class);
+        Intent intent = new Intent(this, FavouriteActivity.class);
         startActivity(intent);
     }
 
