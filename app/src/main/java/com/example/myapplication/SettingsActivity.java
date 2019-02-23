@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private Spinner chooseLanguage;
     private RadioButton getRadioButton;

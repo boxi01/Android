@@ -22,7 +22,7 @@
             android:name=".FavouriteQuotes"
             android:label="@string/favQ" />
         <activity
-            android:name=".Settings"
+            android:name=".SettingsActivity"
             android:label="@string/settings"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
