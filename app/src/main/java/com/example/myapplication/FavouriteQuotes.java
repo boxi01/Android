@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class favouriteQuotes extends AppCompatActivity {
+public class FavouriteQuotes extends AppCompatActivity {
 
     private Button authorButton;
     @Override

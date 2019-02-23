@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class getQuote extends AppCompatActivity {
+public class GetQuote extends AppCompatActivity {
 
     private ImageButton refreshButton;
     @Override
@@ -26,7 +25,7 @@ public class getQuote extends AppCompatActivity {
     }
 
     public void refreshQuote(){
-        Intent intent = new Intent(this, refreshQuote.class);
+        Intent intent = new Intent(this, RefreshQuote.class);
         startActivity(intent);
     }
 }
