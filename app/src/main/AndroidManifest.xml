@@ -32,8 +32,8 @@
             android:name=".GetQuote"
             android:label="@string/randQ" />
         <activity
-            android:name=".OpenAbout"
-            android:label="@string/about" />
+            android:name=".AboutActivity"
+            android:label="@string/aboutLabel" />
     </application>
 
 </manifest>

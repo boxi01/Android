@@ -50,7 +50,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void openAbout(){
-        Intent intent = new Intent(this, OpenAbout.class);
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 

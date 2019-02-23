@@ -6,7 +6,7 @@
     <string name="button4">ABOUT</string>
 
     //About
-    <string name="aboutMe"><p style="text-align:center"><strong>QUOTATIONSHAKE</strong> by Joanna Pudelko and Pawel Maslowski joapu@inf.upv.es pamas@inf.upv.es DADM 2019</p></string>
+    <string name="aboutUs"><p align="center">Quotation Shake by\n\nJoanna Pudelko\nPawel Maslowski\n\njoapu@inf.upv.es\npamas@inf.upv.es\n\n2019</p></string>
 
     //Generate quotation
     <string name="getQuote">Hello! Press REFRESH to get a new quotation</string>
@@ -33,6 +33,6 @@
     <string name="postRadioButton">POST </string>
     <string name="favQ">Favourite quotations</string>
     <string name="randQ">Random quotations</string>
-    <string name="about">About</string>
+    <string name="aboutLabel">About</string>
     <string name="qS">Quotation Shake</string>
 </resources>
