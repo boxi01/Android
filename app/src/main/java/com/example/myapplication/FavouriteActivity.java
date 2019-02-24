@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
+import quotation.Quotation;
+
 public class FavouriteActivity extends AppCompatActivity {
 
     private Button authorButton;
@@ -15,14 +19,14 @@ public class FavouriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
 
-        authorButton = (Button) findViewById(R.id.authorButton);
+        /*authorButton = (Button) findViewById(R.id.authorButton);
         authorButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 infoAboutAuthor();
             }
-        });
+        });*/
     }
 
     public void infoAboutAuthor(){
@@ -33,5 +37,13 @@ public class FavouriteActivity extends AppCompatActivity {
         if(webIntent.resolveActivity(getPackageManager())!=null){
             startActivity(webIntent);
         }
+    }
+
+    ArrayList<Quotation> getMockQuotations() {
+        ArrayList<Quotation> quotationList = new ArrayList<>();
+        //TODO dodac 10 quoation do listy
+        //Quotation newQuotation = new Quotation();
+        // quotationList.add(newQuotation);
+        return quotationList;
     }
 }

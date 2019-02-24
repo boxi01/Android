@@ -1,25 +1,25 @@
 <resources>
-    <string name="app_name" translatable="false">QuotationShake</string>
-    <string name="button1">GET QUOTATIONS</string>
+    <string name="app_name">QuotationShake</string>
+    <string name="button1" translatable="false">GET QUOTATIONS</string>
     <string name="button2">FAVOURITE QUOTATIONS</string>
     <string name="button3">SETTINGS</string>
-    <string name="button4">ABOUT</string>
+    <string name="button4" translatable="false">ABOUT</string>
 
     //About
-    <string name="aboutUs"><p align="center">Quotation Shake by\n\nJoanna Pudelko\nPawel Maslowski\n\njoapu@inf.upv.es\npamas@inf.upv.es\n\n2019</p></string>
+    <string name="aboutUs" translatable="false"><p align="center">Quotation Shake by\n\nJoanna Pudelko\nPawel Maslowski\n\njoapu@inf.upv.es\npamas@inf.upv.es\n\n2019</p></string>
 
     //Generate quotation
-    <string name="getQuote">Hello %1$s!\nPress Refresh to get a new quotation!</string>
-    <string name="refreshQuote">“Be the change that you wish to see in the world.” </string>
-    <string name="author">~ Mahatma Gandhi </string>
-    <string name="authorButton">AUTHOR INFO </string>
-    <string name="settings">Settings </string>
-    <string name="nameTitle">Name that indeficates the user </string>
-    <string name="textLanguage">Quotations will be received in the selected language </string>
-    <string name="username">Nameless One</string>
+    <string name="getQuote" translatable="false">Hello %1$s!\nPress Refresh to get a new quotation!</string>
+    <string name="refreshQuote" translatable="false">“Be the change that you wish to see in the world.” </string>
+    <string name="author" translatable="false">~ Mahatma Gandhi </string>
+    <string name="authorButton" translatable="false">AUTHOR INFO </string>
+    <string name="settings" translatable="false">Settings </string>
+    <string name="nameTitle" translatable="false">Name that indeficates the user </string>
+    <string name="textLanguage" translatable="false">Quotations will be received in the selected language </string>
+    <string name="username" translatable="false">Nameless One</string>
 
     //Settings
-    <string name="insertUserName">Insert your name </string>
+    <string name="insertUserName" translatable="false">Insert your name </string>
     <string-array name="chooseLanguage">
         <item>English</item>
         <item>Polish</item>
@@ -29,12 +29,12 @@
         <item>German</item>
         <item>Ukrainian</item>
     </string-array>
-    <string name="radioTitle">Web requested will be performed using the selected HTTP method </string>
-    <string name="getRadioButton">GET </string>
-    <string name="postRadioButton">POST </string>
-    <string name="favQ">Favourite quotations</string>
-    <string name="randQ">Random quotations</string>
-    <string name="aboutLabel">About</string>
-    <string name="qS">Quotation Shake</string>
-    <string name="refresh_button">refresh button</string>
+    <string name="radioTitle" translatable="false">Web requested will be performed using the selected HTTP method </string>
+    <string name="getRadioButton" translatable="false">GET </string>
+    <string name="postRadioButton" translatable="false">POST </string>
+    <string name="favQ" translatable="false">Favourite quotations</string>
+    <string name="randQ" translatable="false">Random quotations</string>
+    <string name="aboutLabel" translatable="false">About</string>
+    <string name="qS" translatable="false">Quotation Shake</string>
+    <string name="refresh_button" translatable="false">refresh button</string>
 </resources>

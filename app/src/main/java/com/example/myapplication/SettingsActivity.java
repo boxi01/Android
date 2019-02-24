@@ -19,13 +19,13 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.chooseLanguage);
+      /*  Spinner spinner = (Spinner) findViewById(R.id.chooseLanguage);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.chooseLanguage, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);*/
     }
 
 
