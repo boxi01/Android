@@ -38,11 +38,13 @@
     <string name="aboutLabel" translatable="false">About</string>
     <string name="qS" translatable="false">Quotation Shake</string>
     <string name="refresh_button" translatable="false">refresh button</string>
-    <string name="unknownAuthorInfo">It is impossible to find more information about the quatation author - he/she is unknown</string>
+    <string name="unknownAuthorInfo">It was impossible to find more information about the quatation author - he/she is unknown</string>
     <string name="deleteConfirmation">Are you sure that you want to delete this quotation?</string>
+    <string name="deleteAllConfirmation">Are you sure that you want to delete ALL your favourte quotations?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="add_to_favourites">Add</string>
     <string name="get_new_q">Refresh</string>
+    <string name="clear_all">Clear All</string>
 
 </resources>

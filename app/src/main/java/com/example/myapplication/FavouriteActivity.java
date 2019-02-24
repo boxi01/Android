@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -84,8 +87,8 @@ public class FavouriteActivity extends AppCompatActivity {
         });*/
     }
 
-    //TODO implement method deleting favourite quotation
-    public void deleteFavourite(){
+    //TODO implement method deleting a favourite quotation
+    private void deleteFavourite(){
 
     }
 
@@ -106,4 +109,47 @@ public class FavouriteActivity extends AppCompatActivity {
         // quotationList.add(newQuotation);
         return quotationList;
     }
+
+    //TODO if no elements on list don't show menu, if there are some, show menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.favmenu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteAll:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setMessage(getString(R.string.deleteAllConfirmation));
+
+                /*TODO implement listener for Positive button
+                    builder.setPositiveButton(getString(R.string.yes), new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v){
+                        deleteAllFavs();
+                        hideRemoveAllButton();
+                    }
+                });*/
+                builder.setNegativeButton(getString(R.string.no), null);
+                builder.create().show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    //TODO implement method deleting all favourite quotations
+    private void deleteAllFavs(){
+
+    }
+
+    private void hideRemoveAllButton() {
+        Button raButton = findViewById(R.id.deleteAll);
+        raButton.setVisibility(View.INVISIBLE);
+    };
+
 }
