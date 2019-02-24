@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +53,27 @@ public class FavouriteActivity extends AppCompatActivity {
             }
         };
         listView.setOnItemClickListener(listener);
+
+        AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setMessage(getString(R.string.deleteConfirmation));
+                /*TODO implement listener for Positive button
+                    builder.setPositiveButton(getString(R.string.yes), new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v){
+                        deleteFavourite();
+                    }
+                });*/
+                builder.setNegativeButton(getString(R.string.no), null);
+                builder.create().show();
+                return false;
+            }
+        };
+
+        listView.setOnItemLongClickListener(longClickListener);
         /*authorButton = (Button) findViewById(R.id.authorButton);
         authorButton.setOnClickListener(new View.OnClickListener(){
 
@@ -59,6 +82,11 @@ public class FavouriteActivity extends AppCompatActivity {
                 infoAboutAuthor();
             }
         });*/
+    }
+
+    //TODO implement method deleting favourite quotation
+    public void deleteFavourite(){
+
     }
 
     public void infoAboutAuthor(String authorEncoded){

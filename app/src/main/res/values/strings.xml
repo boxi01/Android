@@ -29,6 +29,7 @@
         <item>German</item>
         <item>Ukrainian</item>
     </string-array>
+
     <string name="radioTitle" translatable="false">Web requested will be performed using the selected HTTP method </string>
     <string name="getRadioButton" translatable="false">GET </string>
     <string name="postRadioButton" translatable="false">POST </string>
@@ -38,4 +39,8 @@
     <string name="qS" translatable="false">Quotation Shake</string>
     <string name="refresh_button" translatable="false">refresh button</string>
     <string name="unknownAuthorInfo">It is impossible to find more information about the quatation author - he/she is unknown</string>
+    <string name="deleteConfirmation">Are you sure that you want to delete this quotation?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
 </resources>
