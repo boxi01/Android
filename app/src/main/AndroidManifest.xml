@@ -32,12 +32,6 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
         </activity>
         <activity
-            android:name=".RefreshQuote"
-            android:label="@string/randQ"
-            android:parentActivityName="com.example.myapplication.DashboardActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
-        </activity>
-        <activity
             android:name=".QuotationActivity"
             android:label="@string/randQ"
             android:parentActivityName="com.example.myapplication.DashboardActivity">
