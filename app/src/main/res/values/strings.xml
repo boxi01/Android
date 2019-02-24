@@ -37,4 +37,5 @@
     <string name="aboutLabel" translatable="false">About</string>
     <string name="qS" translatable="false">Quotation Shake</string>
     <string name="refresh_button" translatable="false">refresh button</string>
+    <string name="unknownAuthorInfo">It is impossible to find more information about the quatation author - he/she is unknown</string>
 </resources>
