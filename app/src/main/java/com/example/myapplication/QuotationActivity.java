@@ -5,14 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
-public class GetQuote extends AppCompatActivity {
+public class QuotationActivity extends AppCompatActivity {
 
     private ImageButton refreshButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_quote);
+        setContentView(R.layout.activity_quotation);
+        String username=getString(R.string.username);
+        String getQuotePhrase=getString(R.string.getQuote,username);
+        TextView getQuote = findViewById(R.id.getQuote);
+        getQuote.setText(getQuotePhrase);
 
         refreshButton = (ImageButton) findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(new View.OnClickListener(){

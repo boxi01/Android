@@ -29,7 +29,7 @@
             android:name=".RefreshQuote"
             android:label="@string/randQ" />
         <activity
-            android:name=".GetQuote"
+            android:name=".QuotationActivity"
             android:label="@string/randQ" />
         <activity
             android:name=".AboutActivity"

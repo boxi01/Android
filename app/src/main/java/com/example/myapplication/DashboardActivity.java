@@ -55,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void getQuote(){
-        Intent intent = new Intent(this, GetQuote.class);
+        Intent intent = new Intent(this, QuotationActivity.class);
         startActivity(intent);
     }
 
