@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import myadapter.MyAdapter;
 import quotation.Quotation;
 
 public class FavouriteActivity extends AppCompatActivity {
@@ -18,6 +21,11 @@ public class FavouriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
+
+        ListAdapter adapter = new MyAdapter(this, R.id.quotationListRow, getMockQuotations());
+
+        ListView listView = findViewById(R.id.favouriteList);
+        listView.setAdapter(adapter);
 
         /*authorButton = (Button) findViewById(R.id.authorButton);
         authorButton.setOnClickListener(new View.OnClickListener(){
@@ -39,7 +47,7 @@ public class FavouriteActivity extends AppCompatActivity {
         }
     }
 
-    ArrayList<Quotation> getMockQuotations() {
+    public ArrayList<Quotation> getMockQuotations() {
         ArrayList<Quotation> quotationList = new ArrayList<>();
         //TODO dodac 10 quoation do listy
         //Quotation newQuotation = new Quotation();
