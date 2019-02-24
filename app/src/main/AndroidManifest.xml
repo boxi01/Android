@@ -20,20 +20,35 @@
         </activity>
         <activity
             android:name=".FavouriteActivity"
-            android:label="@string/favQ" />
+            android:label="@string/favQ"
+            android:parentActivityName="com.example.myapplication.DashboardActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName="com.example.myapplication.DashboardActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+        </activity>
         <activity
             android:name=".RefreshQuote"
-            android:label="@string/randQ" />
+            android:label="@string/randQ"
+            android:parentActivityName="com.example.myapplication.DashboardActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+        </activity>
         <activity
             android:name=".QuotationActivity"
-            android:label="@string/randQ" />
+            android:label="@string/randQ"
+            android:parentActivityName="com.example.myapplication.DashboardActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+        </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/aboutLabel" />
+            android:label="@string/aboutLabel"
+            android:parentActivityName="com.example.myapplication.DashboardActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+        </activity>
     </application>
 
 </manifest>
