@@ -1,9 +1,12 @@
 package com.example.myapplication;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -18,7 +21,11 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String username = sharedPreferences.getString("username","");
 
+        EditText nameText = findViewById(R.id.insertUserName);
+        nameText.setText(username);
       /*  Spinner spinner = (Spinner) findViewById(R.id.chooseLanguage);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -42,5 +49,16 @@ public class SettingsActivity extends AppCompatActivity {
                 if (checked)
                     break;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        EditText nameText = findViewById(R.id.insertUserName);
+        String username = nameText.getText().toString();
+        editor.putString("username",username);
+        editor.apply();
     }
 }

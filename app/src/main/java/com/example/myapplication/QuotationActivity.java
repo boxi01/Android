@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +16,8 @@ public class QuotationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotation);
-        String username=getString(R.string.username);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String username = sharedPreferences.getString("username",getString(R.string.username));
         String getQuotePhrase=getString(R.string.getQuote,username);
         TextView getQuote = findViewById(R.id.getQuote);
         getQuote.setText(getQuotePhrase);
