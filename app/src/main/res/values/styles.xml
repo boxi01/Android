@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BlueButton">
+        <item name="android:background">#003399</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 </resources>
+
+

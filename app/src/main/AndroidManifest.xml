@@ -15,7 +15,7 @@
             android:parentActivityName=".DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myapplication.DashboardActivity"/>
+                android:value=".DashboardActivity"/>
         </activity>
         <activity
             android:name=".DashboardActivity"
