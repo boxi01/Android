@@ -50,6 +50,13 @@
     <string name="username">username</string>
     <string name="language">language</string>
     <string name="requestMethod">requestMethod</string>
+    <string name="userName">User name</string>
+    <string name="quotationLanguage">Quotation language</string>
+    <string name="httpMethod">HTTP reguested method</string>
+    <string name="databaseTittle">Database access method</string>
+    <string name="databaseSummary">Database will be accessed following the selected method</string>
+    <string name="webServices">Web services</string>
+    <string name="databaseTittle2">Database</string>
 
 
 </resources>
