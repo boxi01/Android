@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuotationShake</string>
+    <string name="radioTitle">Odśwież</string>
+    <string name="insertUserName">Wpisz swoje imię</string>
+    <string name="username">Użytkowniku</string>
+    <string name="textLanguage">Wybierz język dla cytatów</string>
+    <string name="nameTitle">Imię identyfikujące użytkownika</string>
+    <string name="settings">Ustawienia</string>
+    <string name="authorButton">INFORMACJE O AUTORZE</string>
+    <string name="refreshQuote">\"Bądź zmianą jaką chciałbyś widzieć na świecie\"</string>
+    <string name="getQuote">Cześć %l$s! Naciśnij Odśwież, aby wylosować cytat</string>
+    <string name="aboutUs"><p align="center">\"Losuj cytat\" stworzona przez  Joannę Pudelko i  Pawela Maslowskiego  joapu@inf.upv.es pamas@inf.upv.es  2019</p></string>
+    <string name="button4">WIĘCEJ</string>
+    <string name="button3">USTAWIENIA</string>
+    <string name="button2">ULUBIONY CYTAT</string>
+    <string name="button1">LOSUJ CYTAT</string>
+    <string name="getRadioButton">POBIERZ</string>
+    <string name="postRadioButton">WSTAW</string>
+    <string name="favQ">Ulubione</string>
+    <string name="randQ">Losowy cytat</string>
+    <string name="aboutLabel">Więcej</string>
+    <string name="qS">Losu cytat</string>
+    <string name="refresh_button">Odśwież</string>
+    <string name="unknownAuthorInfo">Nie znaleziono informacji o autorze</string>
+    <string name="deleteConfirmation">Jesteś pewna/y, że chcesz usunąć ten cytat</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="add_to_favourites">Dodaj</string>
+    <string name="get_new_q">Odśwież</string>
+</resources>
