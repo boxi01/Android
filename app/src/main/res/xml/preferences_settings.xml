@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference android:key="@string/username" android:title="@string/nameTitle" ></EditTextPreference>
+    <PreferenceCategory>
+        <ListPreference android:title="@string/textLanguage" android:entries="@array/languages" android:entryValues="@array/languages" android:key="@string/language"></ListPreference>
+        <ListPreference android:title="@string/radioTitle" android:entries="@array/requestType" android:entryValues="@array/requestType" android:key="@string/requestMethod"></ListPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

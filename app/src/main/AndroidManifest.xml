@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myapplication.DashboardActivity"/>
+        </activity>
+        <activity
             android:name=".DashboardActivity"
             android:label="@string/qS">
             <intent-filter>
@@ -21,27 +29,26 @@
         <activity
             android:name=".FavouriteActivity"
             android:label="@string/favQ"
-            android:parentActivityName="com.example.myapplication.DashboardActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/settings"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:parentActivityName="com.example.myapplication.DashboardActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myapplication.DashboardActivity" />
         </activity>
         <activity
             android:name=".QuotationActivity"
             android:label="@string/randQ"
-            android:parentActivityName="com.example.myapplication.DashboardActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myapplication.DashboardActivity" />
         </activity>
         <activity
             android:name=".AboutActivity"
             android:label="@string/aboutLabel"
-            android:parentActivityName="com.example.myapplication.DashboardActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.example.myapplication.DashboardActivity"/>
+            android:parentActivityName=".DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myapplication.DashboardActivity" />
         </activity>
     </application>
 

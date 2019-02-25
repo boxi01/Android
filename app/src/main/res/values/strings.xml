@@ -16,7 +16,7 @@
     <string name="settings" translatable="false">Settings </string>
     <string name="nameTitle" translatable="false">Name that indeficates the user </string>
     <string name="textLanguage" translatable="false">Quotations will be received in the selected language </string>
-    <string name="username" translatable="false">Nameless One</string>
+    <string name="defaultUsername" translatable="false">Nameless One</string>
 
     //Settings
     <string name="insertUserName" translatable="false">Insert your name </string>
@@ -46,5 +46,10 @@
     <string name="add_to_favourites">Add</string>
     <string name="get_new_q">Refresh</string>
     <string name="clear_all">Clear All</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="username">username</string>
+    <string name="language">language</string>
+    <string name="requestMethod">requestMethod</string>
+
 
 </resources>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="languages">
-    <item>"English"</item>
-    <item>"Russian"</item>
+        <item>"English"</item>
+        <item>"Russian"</item>
+    </array>
+    <array name="requestType">
+        <item>"get"</item>
+        <item>"post"</item>
     </array>
 </resources>

@@ -17,7 +17,7 @@ public class QuotationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotation);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String username = sharedPreferences.getString("username",getString(R.string.username));
+        String username = sharedPreferences.getString("username",getString(R.string.defaultUsername));
         String getQuotePhrase=getString(R.string.getQuote,username);
         TextView getQuote = findViewById(R.id.getQuote);
         getQuote.setText(getQuotePhrase);
