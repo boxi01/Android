@@ -2,7 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/addToFav" android:title="@string/add_to_favourites" android:icon="@android:drawable/ic_menu_add" android:visible="false" app:showAsAction="always"/>
-    <item android:id="@+id/getNewQ" android:title="@string/get_new_q" android:icon="@android:drawable/ic_menu_rotate" android:visible="true" app:showAsAction="always"/>
+    <item
+        android:id="@+id/addToFav"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/add_to_favourites"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/getNewQ"
+        android:title="@string/get_new_q"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
 
 </menu>

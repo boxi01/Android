@@ -3,7 +3,7 @@
     <string name="app_name">QuotationShake</string>
     <string name="radioTitle">Odśwież</string>
     <string name="insertUserName">Wpisz swoje imię</string>
-    <string name="username">Użytkowniku</string>
+    <string name="defaultUsername">Użytkowniku</string>
     <string name="textLanguage">Wybierz język dla cytatów</string>
     <string name="nameTitle">Imię identyfikujące użytkownika</string>
     <string name="settings">Ustawienia</string>
@@ -24,8 +24,21 @@
     <string name="refresh_button">Odśwież</string>
     <string name="unknownAuthorInfo">Nie znaleziono informacji o autorze</string>
     <string name="deleteConfirmation">Jesteś pewna/y, że chcesz usunąć ten cytat</string>
+    <string name="deleteAllConfirmation">Jesteś pewna/y, że chcesz usunąć wszystkie cytaty</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="add_to_favourites">Dodaj</string>
     <string name="get_new_q">Odśwież</string>
+    <string name="clear_all">Usuń wszsytkie</string>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="username">Imię użytkownika</string>
+    <string name="language">Język</string>
+    <string name="requestMethod">Wybrana metoda</string>
+    <string name="userName">Imię użytkownika</string>
+    <string name="quotationLanguage">Język cytatów</string>
+    <string name="httpMethod">Wybrana metoga HTTP</string>
+    <string name="databaseTittle">Metoda dostępu do bazy danych</string>
+    <string name="databaseSummary">Dostęp do bazy danych przez wybraną metodę</string>
+    <string name="webServices">Ustawnienia sieciowe</string>
+    <string name="databaseTittle2">Baza danych</string>
 </resources>
