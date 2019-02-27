@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,19 +19,32 @@ import android.widget.Toast;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
+import databases.Database;
 import myadapter.MyAdapter;
 import quotation.Quotation;
 
-public class FavouriteActivity extends AppCompatActivity {
 
-    private Button authorButton;
+public class FavouriteActivity extends AppCompatActivity {
+    MyAdapter adapter = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
+        List<Quotation> contactList = Database.getInstance(this).getQuotations();
 
-        ListAdapter adapter = new MyAdapter(this, R.id.quotationListRow, getMockQuotations());
+
+        adapter = new MyAdapter(this, R.layout.quotation_list_row, contactList);
+        Log.d("DEBUG", "TESTUJEMYx 4");
+
+        Quotation quotation_sample = new Quotation("Cokolwiek", "Adam");
+        Log.d("DEBUG", "TESTUJEMYx 5");
+
+        adapter.add(quotation_sample);
+        Log.d("DEBUG", "TESTUJEMYx 6");
+
 
         ListView listView = findViewById(R.id.favouriteList);
         listView.setAdapter(adapter);
@@ -55,6 +69,8 @@ public class FavouriteActivity extends AppCompatActivity {
                 }
             }
         };
+        Log.d("DEBUG", "TESTUJEMYx 7");
+
         listView.setOnItemClickListener(listener);
 
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
@@ -75,6 +91,7 @@ public class FavouriteActivity extends AppCompatActivity {
                 return false;
             }
         };
+        Log.d("DEBUG", "TESTUJEMYx 8");
 
         listView.setOnItemLongClickListener(longClickListener);
         /*authorButton = (Button) findViewById(R.id.authorButton);
@@ -113,8 +130,10 @@ public class FavouriteActivity extends AppCompatActivity {
     //TODO if no elements on list don't show menu, if there are some, show menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d("DEBUG", "TESTUJEMYx 9");
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.favmenu,menu);
+        Log.d("DEBUG", "TESTUJEMYx 10");
         return super.onCreateOptionsMenu(menu);
     }
 

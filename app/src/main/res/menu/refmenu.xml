@@ -6,12 +6,12 @@
         android:id="@+id/addToFav"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/add_to_favourites"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/getNewQ"
         android:title="@string/get_new_q"
         android:icon="@android:drawable/ic_menu_rotate"
         android:visible="true"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
 </menu>
