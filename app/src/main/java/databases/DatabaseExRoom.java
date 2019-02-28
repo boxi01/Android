@@ -8,6 +8,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.arch.persistence.room.Database;
+import android.util.Log;
 
 
 import quotation.Quotation;
@@ -23,7 +24,9 @@ public abstract class DatabaseExRoom extends RoomDatabase {
                     .databaseBuilder(quotation, DatabaseExRoom.class, "quotation_table")
                     .allowMainThreadQueries()
                     .build();
+            Log.d("DEBUG", "TESTUJEMY ROOMA");
         }
+        Log.d("DEBUG", "TESTUJEMY ROOMA");
         return quotationsDatabase;
     }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,9 @@ public class Database extends SQLiteOpenHelper {
 
         if (ourInstance == null) {
             ourInstance = new Database(context, "quotation_database", null, 1);
+            Log.d("DEBUG", "TESTUJEMY SQL");
         }
+        Log.d("DEBUG", "TESTUJEMY SQL");
         return ourInstance;
 
     }
@@ -44,6 +47,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE quotation_database (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                 "quoteText TEXT NOT NULL, quoteAuthor TEXT NOT NULL);");
+        Log.d("DEBUG", "TESTUJEMY SQL 3");
 
     }
 

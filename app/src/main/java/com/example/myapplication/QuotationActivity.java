@@ -17,6 +17,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 import databases.Database;
+import databases.DatabaseExRoom;
 import myadapter.MyAdapter;
 import quotation.Quotation;
 
@@ -31,6 +32,7 @@ public class QuotationActivity extends AppCompatActivity {
     String quoteAuthor = null;
     TextView sampleQ;
     TextView sampleAuthor;
+    String methodName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +43,23 @@ public class QuotationActivity extends AppCompatActivity {
         String getQuotePhrase=getString(R.string.getQuote,username);
         TextView getQuote = findViewById(R.id.getQuote);
         getQuote.setText(getQuotePhrase);
-        List<Quotation> contactList = Database.getInstance(this).getQuotations();
-
-        // Create the adapter linking the data source to the ListView
-        adapter = new MyAdapter(this, R.layout.quotation_list_row, contactList);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        String servername = settings.getString("data_method", "Room");
+        methodName = settings.getString("databaseMethod", "Room");
+
+        List<Quotation> quotationList = Database.getInstance(this).getQuotations();
+
+        if (methodName.equals("Room")) {
+
+            quotationList = DatabaseExRoom.getInstance(this).databaseDao().getQuotations();
+
+        } else {
+
+            quotationList = Database.getInstance(this).getQuotations();
+        }
+
+        // Create the adapter linking the data source to the ListView
+        adapter = new MyAdapter(this, R.layout.quotation_list_row, quotationList);
 
     }
 
@@ -87,7 +99,16 @@ public class QuotationActivity extends AppCompatActivity {
                 Log.d("DEBUG", "TESTUJEMY 5"+quotation.getQuoteText()+" i "+quotation.getQuoteAuthor());
 
                 //Add to list
-                Database.getInstance(this).addQuotation(quotation);
+                if (methodName.equals("Room")) {
+
+                    DatabaseExRoom.getInstance(this).databaseDao().addQuotation(quotation);
+                    Log.d("DEBUG", "Prawdzimwy room");
+
+                } else {
+
+                    Database.getInstance(this).addQuotation(quotation);
+                    Log.d("DEBUG", "Prawdzimwy sql");
+                }
                 Log.d("DEBUG", "TESTUJEMY 6"+quoteAuthor+" i "+quoteText);
 
                 adapter.add(quotation);

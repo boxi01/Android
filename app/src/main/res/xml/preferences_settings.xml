@@ -8,8 +8,8 @@
         <ListPreference android:title="@string/httpMethod" android:summary="@string/radioTitle" android:entries="@array/requestType" android:entryValues="@array/requestType" android:key="@string/requestMethod"></ListPreference>
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="data_method" android:title="@string/databaseTittle2">
-        <ListPreference android:title="@string/databaseTittle" android:summary="@string/databaseSummary" android:entries="@array/requestMethod" android:entryValues="@array/requestType" android:key="databaseMethod"></ListPreference>
+    <PreferenceCategory android:title="@string/databaseTittle2">
+        <ListPreference android:title="@string/databaseTittle" android:summary="@string/databaseSummary" android:entries="@array/databaseMethod" android:entryValues="@array/databaseMethod" android:key="databaseMethod"></ListPreference>
 
     </PreferenceCategory>
 

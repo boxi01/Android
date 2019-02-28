@@ -10,7 +10,7 @@
         <item>"post"</item>
     </array>
 
-    <array name="requestMethod">
+    <array name="databaseMethod">
         <item>"Room"</item>
         <item>"SQLiteOpenHelper"</item>
     </array>

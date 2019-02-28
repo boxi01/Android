@@ -24,24 +24,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import databases.Database;
+import databases.DatabaseExRoom;
 import myadapter.MyAdapter;
 import quotation.Quotation;
 
 
 public class FavouriteActivity extends AppCompatActivity {
     MyAdapter adapter = null;
+    String methodName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
-        List<Quotation> contactList = Database.getInstance(this).getQuotations();
+        List<Quotation> quotationList;
 
+        if (methodName.equals("Room")) {
+
+            quotationList = DatabaseExRoom.getInstance(this).databaseDao().getQuotations();
+
+        } else {
+
+            quotationList = Database.getInstance(this).getQuotations();
+        }
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        String servername = settings.getString("data_method", "Room");
+        methodName = settings.getString("databaseMethod", "Room");
 
 
-        adapter = new MyAdapter(this, R.layout.quotation_list_row, contactList);
+        adapter = new MyAdapter(this, R.layout.quotation_list_row, quotationList);
         Log.d("DEBUG", "TESTUJEMYx 4");
 
         Quotation quotation_sample = new Quotation("Cokolwiek", "Adam");
