@@ -1,14 +1,21 @@
 package quotation;
-/*
+
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 
-@Entity(indices = {@Index("quotes")})*/
+@Entity(tableName = "quotation_table", indices = {@Index("name")})
+
 
 public class Quotation {
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo (name = "quoteText")
     private String quoteText;
+
+    @ColumnInfo (name = "quoteAuthor")
     private String quoteAuthor;
 
 

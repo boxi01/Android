@@ -46,6 +46,9 @@ public class QuotationActivity extends AppCompatActivity {
         // Create the adapter linking the data source to the ListView
         adapter = new MyAdapter(this, R.layout.quotation_list_row, contactList);
 
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        String servername = settings.getString("data_method", "Room");
+
     }
 
     private void refreshQuote(){
