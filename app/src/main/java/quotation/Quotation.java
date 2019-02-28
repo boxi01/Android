@@ -1,7 +1,11 @@
 package quotation;
+/*
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
 
 
-
+@Entity(indices = {@Index("quotes")})*/
 
 public class Quotation {
     private String quoteText;

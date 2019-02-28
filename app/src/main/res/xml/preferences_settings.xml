@@ -8,7 +8,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/databaseTittle2">
-        <ListPreference android:title="@string/databaseTittle" android:summary="@string/databaseSummary" android:entries="@array/requestType" android:entryValues="@array/requestType" android:key="databaseMethod"></ListPreference>
+        <ListPreference android:title="@string/databaseTittle" android:summary="@string/databaseSummary" android:entries="@array/requestMethod" android:entryValues="@array/requestType" android:key="databaseMethod"></ListPreference>
 
     </PreferenceCategory>
 

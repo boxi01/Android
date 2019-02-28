@@ -4,8 +4,14 @@
         <item>"English"</item>
         <item>"Russian"</item>
     </array>
+
     <array name="requestType">
         <item>"get"</item>
         <item>"post"</item>
+    </array>
+
+    <array name="requestMethod">
+        <item>"Room"</item>
+        <item>"SQLiteOpenHelper"</item>
     </array>
 </resources>
