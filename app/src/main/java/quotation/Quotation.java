@@ -6,12 +6,14 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 
-@Entity(tableName = "quotation_table", indices = {@Index("name")})
+@Entity(tableName = "quotation_table")
 
 
 public class Quotation {
 
     @PrimaryKey(autoGenerate = true)
+    private int quotation_id;
+
     @ColumnInfo (name = "quoteText")
     private String quoteText;
 
@@ -38,5 +40,13 @@ public class Quotation {
 
     public void setQuoteAuthor(String quoteAuthor) {
         this.quoteAuthor = quoteAuthor;
+    }
+
+    public int getQuotation_id() {
+        return quotation_id;
+    }
+
+    public void setQuotation_id(int quotation_id) {
+        this.quotation_id = quotation_id;
     }
 }

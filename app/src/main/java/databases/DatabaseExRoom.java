@@ -7,9 +7,12 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.arch.persistence.room.Database;
+
 
 import quotation.Quotation;
 
+@Database(entities = {Quotation.class}, version = 1, exportSchema = false)
 public abstract class DatabaseExRoom extends RoomDatabase {
 
     private static DatabaseExRoom quotationsDatabase;

@@ -11,19 +11,23 @@ import java.util.List;
 
 import quotation.Quotation;
 
+@Dao
 public interface DatabaseDao {
 
     @Query("SELECT * FROM quotation_table")
     List<Quotation> getQuotations();
 
     @Query("SELECT * FROM quotation_table WHERE quoteText = :name")
-    String getOneQuotation(String name);
+    Quotation getOneQuotation(String name);
 
     @Query("DELETE FROM quotation_table")
-    List<Quotation> deleteAllQuotations();
+    void deleteAllQuotations();
 
     @Insert
-    void addQuotation(Quotation quotation);
+    void addQuotation(Quotation... quotations);
+
+    @Update
+    void updateQuotation(Quotation quotations);
 
     @Delete
     void deleteQuotation(Quotation quotation);

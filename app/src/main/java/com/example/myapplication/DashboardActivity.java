@@ -53,11 +53,12 @@ public class DashboardActivity extends AppCompatActivity {
         SharedPreferences prefs =
                 PreferenceManager.getDefaultSharedPreferences(this);
 
-        if (prefs.getBoolean("first_run", true) == true)
+        if (prefs.getBoolean("first_run", true))
         {
             DatabaseExRoom.getInstance(this).databaseDao().getQuotations();
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("first_run", false);
+            editor.apply();
         }
 
     }
