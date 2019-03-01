@@ -109,4 +109,30 @@ public class Database extends SQLiteOpenHelper {
         // Close the database
         database.close();
     }
+
+
+    /*
+        Delete a given contact from the database
+    */
+    public void deleteQuotation (Quotation quotation) {
+        // Get access to the database in write mode
+        SQLiteDatabase database = getWritableDatabase();
+        // Remove contacts from the database with matching name, email, and phone
+        ContentValues values = new ContentValues();
+        values.put("id", quotation.getQuotation_id());
+        values.put("quoteText", quotation.getQuoteText());
+        values.put("quoteAuthor", quotation.getQuoteAuthor());
+        database.delete("contacts_table", "id=? AND quoteText=? and quoteAuthor=?",
+                new String[]{Integer.toString(quotation.getQuotation_id()), quotation.getQuoteText(), quotation.getQuoteAuthor()});
+        // Close the database
+        database.close();
+    }
+
+    public void deleteAll() {
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL("delete from quotation_database");
+        database.close();
+    }
+
+
 }

@@ -37,7 +37,10 @@ public class FavouriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
-        List<Quotation> quotationList;
+        final List<Quotation> quotationList;
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        methodName = settings.getString("databaseMethod", "Room");
 
         if (methodName.equals("Room")) {
 
@@ -47,8 +50,6 @@ public class FavouriteActivity extends AppCompatActivity {
 
             quotationList = Database.getInstance(this).getQuotations();
         }
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        methodName = settings.getString("databaseMethod", "Room");
 
 
         adapter = new MyAdapter(this, R.layout.quotation_list_row, quotationList);
@@ -90,17 +91,18 @@ public class FavouriteActivity extends AppCompatActivity {
 
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(FavouriteActivity.this);
                 builder.setMessage(getString(R.string.deleteConfirmation));
-                /*TODO implement listener for Positive button
-                    builder.setPositiveButton(getString(R.string.yes), new View.OnClickListener(){
+                    builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Quotation quotation=quotationList.get(position);
+                            deleteFavourite(quotation);
+                        }
+                    });
 
-                    @Override
-                    public void onClick(View v){
-                        deleteFavourite();
-                    }
-                });*/
+
                 builder.setNegativeButton(getString(R.string.no), null);
                 builder.create().show();
                 return false;
@@ -119,9 +121,12 @@ public class FavouriteActivity extends AppCompatActivity {
         });*/
     }
 
-    //TODO implement method deleting a favourite quotation
-    private void deleteFavourite(){
-
+    private void deleteFavourite(Quotation quotation){
+        if (methodName.equals("Room")) {
+            DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().deleteQuotation(quotation);
+        } else {
+            Database.getInstance(getApplicationContext()).deleteQuotation(quotation);
+        }
     }
 
     public void infoAboutAuthor(String authorEncoded){
@@ -156,19 +161,16 @@ public class FavouriteActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.deleteAll:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(FavouriteActivity.this);
                 builder.setMessage(getString(R.string.deleteAllConfirmation));
 
-                /*TODO implement listener for Positive button
-                    builder.setPositiveButton(getString(R.string.yes), new View.OnClickListener(){
-
-                    @Override
-                    public void onClick(View v){
-                        deleteAllFavs();
-                        hideRemoveAllButton();
-                    }
-                });*/
-                builder.setNegativeButton(getString(R.string.no), null);
+                    builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteAllFavs();
+                                }
+                            });
+                    builder.setNegativeButton(getString(R.string.no), null);
                 builder.create().show();
                 return true;
             default:
@@ -178,7 +180,11 @@ public class FavouriteActivity extends AppCompatActivity {
 
     //TODO implement method deleting all favourite quotations
     private void deleteAllFavs(){
-
+        if (methodName.equals("Room")) {
+            DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().deleteAllQuotations();
+        } else {
+            Database.getInstance(getApplicationContext()).deleteAll();
+        }
     }
 
     private void hideRemoveAllButton() {
