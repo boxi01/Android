@@ -22,7 +22,6 @@ public abstract class DatabaseExRoom extends RoomDatabase {
         if (quotationsDatabase == null) {
             quotationsDatabase = Room
                     .databaseBuilder(quotation, DatabaseExRoom.class, "quotation_table")
-                    .allowMainThreadQueries()
                     .build();
             Log.d("DEBUG", "TESTUJEMY ROOMA");
         }

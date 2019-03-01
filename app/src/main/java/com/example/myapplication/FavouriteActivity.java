@@ -97,8 +97,12 @@ public class FavouriteActivity extends AppCompatActivity {
                     builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Quotation quotation=quotationList.get(position);
-                            deleteFavourite(quotation);
+                            final Quotation quotation=quotationList.get(position);
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    deleteFavourite(quotation);                                }
+                            }).start();
                         }
                     });
 
@@ -167,7 +171,11 @@ public class FavouriteActivity extends AppCompatActivity {
                     builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    deleteAllFavs();
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            deleteAllFavs();                                        }
+                                    }).start();
                                 }
                             });
                     builder.setNegativeButton(getString(R.string.no), null);

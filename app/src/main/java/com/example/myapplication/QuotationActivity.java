@@ -47,7 +47,7 @@ public class QuotationActivity extends AppCompatActivity {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         methodName = settings.getString("databaseMethod", "Room");
 
-        List<Quotation> quotationList = Database.getInstance(this).getQuotations();
+        List<Quotation> quotationList;
 
         if (methodName.equals("Room")) {
 
@@ -100,14 +100,22 @@ public class QuotationActivity extends AppCompatActivity {
 
                 //Add to list
                 if (methodName.equals("Room")) {
-
-                    DatabaseExRoom.getInstance(this).databaseDao().addQuotation(quotation);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().addQuotation(quotation);
+                        }
+                    }).start();
                     Log.d("DEBUG", "Prawdzimwy room");
 
                 } else {
 
-                    Database.getInstance(this).addQuotation(quotation);
-                    Log.d("DEBUG", "Prawdzimwy sql");
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Database.getInstance(getApplicationContext()).addQuotation(quotation);
+                        }
+                    }).start();Log.d("DEBUG", "Prawdzimwy sql");
                 }
                 Log.d("DEBUG", "TESTUJEMY 6"+quoteAuthor+" i "+quoteText);
 

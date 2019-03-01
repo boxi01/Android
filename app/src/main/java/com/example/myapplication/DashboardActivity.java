@@ -55,7 +55,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         if (prefs.getBoolean("first_run", true))
         {
-            DatabaseExRoom.getInstance(this).databaseDao().getQuotations();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().getQuotations();
+                }
+            }).start();
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("first_run", false);
             editor.apply();
