@@ -87,7 +87,7 @@ public class QuotationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.getNewQ:
-                AsyncTask refreshTask = new MyHTTPAsyncTask();
+                MyHTTPAsyncTask refreshTask = new MyHTTPAsyncTask(this);
                 refreshTask.execute();
                 Log.d("DEBUG", "TESTUJEMY3 ");
                 return true;
@@ -132,20 +132,20 @@ public class QuotationActivity extends AppCompatActivity {
         }
 
         public void showProgressBar(){
-            MenuItem addToFav = findViewById(R.id.addToFav);
-            MenuItem refresh = findViewById(R.id.getNewQ);
+            android.support.v7.view.menu.ActionMenuItemView addToFav = findViewById(R.id.addToFav);
+            android.support.v7.view.menu.ActionMenuItemView refresh = findViewById(R.id.getNewQ);
             ProgressBar progressBar = findViewById(R.id.progressBar);
-            addToFav.setVisible(false);
-            refresh.setVisible(false);
+            addToFav.setVisibility(View.VISIBLE);
+            refresh.setVisibility(View.VISIBLE);;
             progressBar.setVisibility(View.VISIBLE);
         }
 
         public void hideProgressBar(Quotation quotation) {
-            TextView quote = findViewById(R.id.getQuote);
-            TextView author = findViewById(R.id.sampleAuthor);
 
-            quote.setText(quotation.getQuoteText());
-            author.setText(quotation.getQuoteAuthor());
+            sampleQ = findViewById(R.id.getQuote);
+            sampleAuthor = findViewById(R.id.sampleAuthor);
+            sampleQ.setText(quotation.getQuoteText());
+            sampleAuthor.setText(quotation.getQuoteAuthor());
 
             ProgressBar progressBar = findViewById(R.id.progressBar);
             progressBar.setVisibility(View.INVISIBLE);
