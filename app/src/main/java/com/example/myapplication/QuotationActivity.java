@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -125,6 +126,15 @@ public class QuotationActivity extends AppCompatActivity {
                 return true;
              }
              return super.onOptionsItemSelected(item);
+        }
+
+        public void showProgressBar(){
+            MenuItem addToFav = findViewById(R.id.addToFav);
+            MenuItem refresh = findViewById(R.id.getNewQ);
+            ProgressBar progressBar = findViewById(R.id.progressBar);
+            addToFav.setVisible(false);
+            refresh.setVisible(false);
+            progressBar.setVisibility(View.VISIBLE);
         }
     }
 
