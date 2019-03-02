@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import databases.Database;
 import databases.DatabaseExRoom;
 import myadapter.MyAdapter;
 import quotation.Quotation;
+import tasks.MyHTTPAsyncTask;
 
 public class QuotationActivity extends AppCompatActivity {
 
@@ -85,7 +87,8 @@ public class QuotationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.getNewQ:
-                refreshQuote();
+                AsyncTask refreshTask = new MyHTTPAsyncTask();
+                refreshTask.execute();
                 Log.d("DEBUG", "TESTUJEMY3 ");
                 return true;
             case R.id.addToFav:
@@ -135,6 +138,17 @@ public class QuotationActivity extends AppCompatActivity {
             addToFav.setVisible(false);
             refresh.setVisible(false);
             progressBar.setVisibility(View.VISIBLE);
+        }
+
+        public void hideProgressBar(Quotation quotation) {
+            TextView quote = findViewById(R.id.getQuote);
+            TextView author = findViewById(R.id.sampleAuthor);
+
+            quote.setText(quotation.getQuoteText());
+            author.setText(quotation.getQuoteAuthor());
+
+            ProgressBar progressBar = findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.INVISIBLE);
         }
     }
 

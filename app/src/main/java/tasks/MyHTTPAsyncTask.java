@@ -20,10 +20,12 @@ public class MyHTTPAsyncTask extends AsyncTask<Void,Void, Quotation> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        weakReference.get().showProgressBar();
     }
 
     @Override
     protected void onPostExecute(Quotation quotation) {
         super.onPostExecute(quotation);
+        weakReference.get().hideProgressBar(quotation);
     }
 }
