@@ -133,6 +133,17 @@ public class FavouriteActivity extends AppCompatActivity {
         }
     }
 
+    public void addToAdapter(List<Quotation> quotations){
+        adapter.addAll(quotations);
+        MenuItem deleteAll = findViewById(R.id.deleteAll);
+        if(!adapter.isEmpty()){
+            deleteAll.setVisible(true);
+        }
+        else {
+            deleteAll.setVisible(false);
+        }
+    }
+
     public void infoAboutAuthor(String authorEncoded){
 
         String url = "https://en.wikipedia.org/wiki/Special:Search?search=" + authorEncoded;
