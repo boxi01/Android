@@ -58,7 +58,7 @@ public class DashboardActivity extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().getQuotations();
+                    DatabaseExRoom.getInstance(DashboardActivity.this).databaseDao().getQuotations();
                 }
             }).start();
             SharedPreferences.Editor editor = prefs.edit();

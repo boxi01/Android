@@ -21,7 +21,8 @@ public abstract class DatabaseExRoom extends RoomDatabase {
     public synchronized static DatabaseExRoom getInstance(Context quotation) {
         if (quotationsDatabase == null) {
             quotationsDatabase = Room
-                    .databaseBuilder(quotation, DatabaseExRoom.class, "quotation_table").allowMainThreadQueries()
+                    .databaseBuilder(quotation, DatabaseExRoom.class, "quotation_table")
+                    .allowMainThreadQueries()
                     .build();
             Log.d("DEBUG", "TESTUJEMY ROOMA");
         }

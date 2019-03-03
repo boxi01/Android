@@ -6,6 +6,7 @@
         android:id="@+id/addToFav"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/add_to_favourites"
+        android:visible="false"
         app:showAsAction="always" />
     <item
         android:id="@+id/getNewQ"

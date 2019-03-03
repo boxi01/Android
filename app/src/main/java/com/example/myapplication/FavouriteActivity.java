@@ -26,18 +26,22 @@ import java.util.List;
 import databases.Database;
 import databases.DatabaseExRoom;
 import myadapter.MyAdapter;
+import quotation.QHolder;
 import quotation.Quotation;
 
 
 public class FavouriteActivity extends AppCompatActivity {
-    MyAdapter adapter = null;
-    String methodName;
+    private MyAdapter adapter = null;
+    private String methodName;
 
+    boolean isDeleteAllVis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
-        final List<Quotation> quotationList;
+        List<Quotation> quotationList = new ArrayList<>();
+        final QHolder myQHolder = new QHolder(quotationList);
+
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         methodName = settings.getString("databaseMethod", "Room");
@@ -51,25 +55,21 @@ public class FavouriteActivity extends AppCompatActivity {
             quotationList = Database.getInstance(this).getQuotations();
         }
 
-
+        if(quotationList.isEmpty())
+            isDeleteAllVis=false;
+        else
+            isDeleteAllVis=true;
+        invalidateOptionsMenu();
         adapter = new MyAdapter(this, R.layout.quotation_list_row, quotationList);
-        Log.d("DEBUG", "TESTUJEMYx 4");
-
-        Quotation quotation_sample = new Quotation("Cokolwiek", "Adam");
-        Log.d("DEBUG", "TESTUJEMYx 5");
-
-        adapter.add(quotation_sample);
-        Log.d("DEBUG", "TESTUJEMYx 6");
-
 
         ListView listView = findViewById(R.id.favouriteList);
         listView.setAdapter(adapter);
         AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
-            //TODO finish implementation of onItemClick method - obtaining author info from adapter
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (parent!=null && parent.getClass().getName().equals("MyAdapter")) {
-                    String author = "";
+                {
+                    Quotation quotation = (Quotation) parent.getItemAtPosition(position);
+                    String author = quotation.getQuoteAuthor();
                     if (author != null && !author.equals("")) {
                         String authorEncoded = URLEncoder.encode(author);
                         infoAboutAuthor(authorEncoded);
@@ -80,9 +80,7 @@ public class FavouriteActivity extends AppCompatActivity {
                     }
 
                 }
-                else if (parent != null) {
-                    Toast.makeText(FavouriteActivity.this, "debugujemy: "+parent.getClass().getName(), Toast.LENGTH_SHORT).show();
-                }
+
             }
         };
         Log.d("DEBUG", "TESTUJEMYx 7");
@@ -97,7 +95,7 @@ public class FavouriteActivity extends AppCompatActivity {
                     builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            final Quotation quotation=quotationList.get(position);
+                            final Quotation quotation=myQHolder.getQuotations().get(position);
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -109,7 +107,7 @@ public class FavouriteActivity extends AppCompatActivity {
 
                 builder.setNegativeButton(getString(R.string.no), null);
                 builder.create().show();
-                return false;
+                return true;
             }
         };
         Log.d("DEBUG", "TESTUJEMYx 8");
@@ -126,11 +124,51 @@ public class FavouriteActivity extends AppCompatActivity {
     }
 
     private void deleteFavourite(Quotation quotation){
+        final Quotation quotationToDel=quotation;
         if (methodName.equals("Room")) {
-            DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().deleteQuotation(quotation);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().deleteQuotation(quotationToDel);
+                }
+            }).start();
         } else {
-            Database.getInstance(getApplicationContext()).deleteQuotation(quotation);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Database.getInstance(getApplicationContext()).deleteQuotation(quotationToDel);
+                }
+            }).start();
         }
+
+        List<Quotation> quotationList = new ArrayList<>();
+        final QHolder myQHolder = new QHolder(quotationList);
+
+        if (methodName.equals("Room")) {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    myQHolder.setQuotations(DatabaseExRoom.getInstance(FavouriteActivity.this).databaseDao().getQuotations());
+                }
+            }).start();
+
+        } else {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    myQHolder.setQuotations(Database.getInstance(FavouriteActivity.this).getQuotations());
+                }
+            }).start();}
+
+        quotationList=myQHolder.getQuotations();
+
+        if(quotationList.isEmpty())
+            isDeleteAllVis=false;
+        else
+            isDeleteAllVis=true;
+        invalidateOptionsMenu();
     }
 
     public void addToAdapter(List<Quotation> quotations){
@@ -146,7 +184,7 @@ public class FavouriteActivity extends AppCompatActivity {
 
     public void infoAboutAuthor(String authorEncoded){
 
-        String url = "https://en.wikipedia.org/wiki/Special:Search?search=" + authorEncoded;
+        String url = getString(R.string.searchWiki) + authorEncoded;
         Uri webpage = Uri.parse(url);
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
         if(webIntent.resolveActivity(getPackageManager())!=null){
@@ -154,15 +192,13 @@ public class FavouriteActivity extends AppCompatActivity {
         }
     }
 
-    public ArrayList<Quotation> getMockQuotations() {
+    /*public ArrayList<Quotation> getMockQuotations() {
         ArrayList<Quotation> quotationList = new ArrayList<>();
-        //TODO dodac 10 quoation do listy
         //Quotation newQuotation = new Quotation();
         // quotationList.add(newQuotation);
         return quotationList;
-    }
+    }*/
 
-    //TODO if no elements on list don't show menu, if there are some, show menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.d("DEBUG", "TESTUJEMYx 9");
@@ -170,6 +206,14 @@ public class FavouriteActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.favmenu,menu);
         Log.d("DEBUG", "TESTUJEMYx 10");
         return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem deleteAll = menu.findItem(R.id.deleteAll);
+        deleteAll.setVisible(isDeleteAllVis);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -187,8 +231,11 @@ public class FavouriteActivity extends AppCompatActivity {
                                         public void run() {
                                             deleteAllFavs();                                        }
                                     }).start();
+                                    isDeleteAllVis=false;
+                                    invalidateOptionsMenu();
                                 }
                             });
+
                     builder.setNegativeButton(getString(R.string.no), null);
                 builder.create().show();
                 return true;
@@ -197,7 +244,6 @@ public class FavouriteActivity extends AppCompatActivity {
         }
     }
 
-    //TODO implement method deleting all favourite quotations
     private void deleteAllFavs(){
         if (methodName.equals("Room")) {
             DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().deleteAllQuotations();
@@ -206,9 +252,5 @@ public class FavouriteActivity extends AppCompatActivity {
         }
     }
 
-    private void hideRemoveAllButton() {
-        Button raButton = findViewById(R.id.deleteAll);
-        raButton.setVisibility(View.INVISIBLE);
-    };
 
 }

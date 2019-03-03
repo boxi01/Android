@@ -6,7 +6,7 @@
     <string name="button4">ABOUT</string>
 
     //About
-    <string name="aboutUs"><p align="center">Quotation Shake by  Joanna Pudelko Pawel Maslowski  joapu@inf.upv.es pamas@inf.upv.es  2019</p></string>
+    <string name="aboutUs"><p align="center">Quotation Shake by \n Joanna Pudelko \n Pawel Maslowski \n\n joapu@inf.upv.es \n pamas@inf.upv.es \n\n 2019</p></string>
 
     //Generate quotation
     <string name="getQuote">Hello %1$s!\nPress Refresh to get a new quotation!</string>
@@ -14,7 +14,7 @@
     <string name="author" translatable="false">Mahatma Gandhi</string>
     <string name="authorButton">AUTHOR INFO </string>
     <string name="settings">Settings </string>
-    <string name="nameTitle">Name that indeficates the user </string>
+    <string name="nameTitle">Name that identifies the user </string>
     <string name="textLanguage">Quotations will be received in the selected language </string>
     <string name="defaultUsername">Nameless One</string>
 
@@ -52,11 +52,12 @@
     <string name="requestMethod">requestMethod</string>
     <string name="userName">User name</string>
     <string name="quotationLanguage">Quotation language</string>
-    <string name="httpMethod">HTTP reguested method</string>
+    <string name="httpMethod">HTTP requested method</string>
     <string name="databaseTittle">Database access method</string>
     <string name="databaseSummary">Database will be accessed following the selected method</string>
     <string name="webServices">Web services</string>
     <string name="databaseTittle2">Database</string>
+    <string name="searchWiki">https://en.wikipedia.org/wiki/Special:Search?search=</string>
 
 
 </resources>

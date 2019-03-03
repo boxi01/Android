@@ -16,11 +16,13 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import databases.Database;
 import databases.DatabaseExRoom;
 import myadapter.MyAdapter;
+import quotation.QHolder;
 import quotation.Quotation;
 import tasks.MyHTTPAsyncTask;
 
@@ -31,12 +33,12 @@ public class QuotationActivity extends AppCompatActivity {
     MyAdapter adapter = null;
 
     // Hold references to View objects
-    String quoteText = null;
-    String quoteAuthor = null;
-    TextView sampleQ;
-    TextView sampleAuthor;
-    String methodName;
+    private TextView sampleQ;
+    private TextView sampleAuthor;
+    private String methodName;
 
+    private boolean isRefVis;
+    private boolean isAddVis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,21 +51,36 @@ public class QuotationActivity extends AppCompatActivity {
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         methodName = settings.getString("databaseMethod", "Room");
-
-        List<Quotation> quotationList;
+        List<Quotation> quotationList = new ArrayList<>();
+        final QHolder myQHolder = new QHolder(quotationList);
 
         if (methodName.equals("Room")) {
 
-            quotationList = DatabaseExRoom.getInstance(this).databaseDao().getQuotations();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    myQHolder.setQuotations(DatabaseExRoom.getInstance(QuotationActivity.this).databaseDao().getQuotations());
+                }
+            }).start();
+            Log.d("DEBUG", "Prawdzimwy room q");
+
 
         } else {
 
-            quotationList = Database.getInstance(this).getQuotations();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    myQHolder.setQuotations(DatabaseExRoom.getInstance(QuotationActivity.this).databaseDao().getQuotations());
+                }
+            }).start();
+            Log.d("DEBUG", "Prawdzimwy sql q");
         }
 
+        quotationList = myQHolder.getQuotations();
         // Create the adapter linking the data source to the ListView
         adapter = new MyAdapter(this, R.layout.quotation_list_row, quotationList);
-
+        isAddVis=false;
+        isRefVis=true;
     }
 
     private void refreshQuote(){
@@ -89,6 +106,8 @@ public class QuotationActivity extends AppCompatActivity {
             case R.id.getNewQ:
                 MyHTTPAsyncTask refreshTask = new MyHTTPAsyncTask(this);
                 refreshTask.execute();
+                isAddVis=true;
+                invalidateOptionsMenu();
                 Log.d("DEBUG", "TESTUJEMY3 ");
                 return true;
             case R.id.addToFav:
@@ -107,7 +126,7 @@ public class QuotationActivity extends AppCompatActivity {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            DatabaseExRoom.getInstance(getApplicationContext()).databaseDao().addQuotation(quotation);
+                            DatabaseExRoom.getInstance(QuotationActivity.this).databaseDao().addQuotation(quotation);
                         }
                     }).start();
                     Log.d("DEBUG", "Prawdzimwy room");
@@ -117,26 +136,35 @@ public class QuotationActivity extends AppCompatActivity {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            Database.getInstance(getApplicationContext()).addQuotation(quotation);
+                            Database.getInstance(QuotationActivity.this).addQuotation(quotation);
                         }
-                    }).start();Log.d("DEBUG", "Prawdzimwy sql");
+                    }).start();
+                    Log.d("DEBUG", "Prawdzimwy sql");
                 }
                 Log.d("DEBUG", "TESTUJEMY 6"+quoteAuthor+" i "+quoteText);
 
                 adapter.add(quotation);
-
+                isAddVis=false;
+                invalidateOptionsMenu();
 
                 return true;
              }
              return super.onOptionsItemSelected(item);
         }
 
-        public void showProgressBar(){
-            android.support.v7.view.menu.ActionMenuItemView addToFav = findViewById(R.id.addToFav);
-            android.support.v7.view.menu.ActionMenuItemView refresh = findViewById(R.id.getNewQ);
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem addToFav = menu.findItem(R.id.addToFav);
+        MenuItem refresh = menu.findItem(R.id.getNewQ);
+        addToFav.setVisible(isAddVis);
+        refresh.setVisible(isRefVis);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    public void showProgressBar(){
+            invalidateOptionsMenu();
             ProgressBar progressBar = findViewById(R.id.progressBar);
-            addToFav.setVisibility(View.VISIBLE);
-            refresh.setVisibility(View.VISIBLE);;
+
             progressBar.setVisibility(View.VISIBLE);
         }
 

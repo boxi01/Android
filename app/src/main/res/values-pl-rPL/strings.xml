@@ -41,4 +41,5 @@
     <string name="databaseSummary">Dostęp do bazy danych przez wybraną metodę</string>
     <string name="webServices">Ustawnienia sieciowe</string>
     <string name="databaseTittle2">Baza danych</string>
+    <string name="searchWiki">https://pl.wikipedia.org/wiki/Special:Search?search=</string>
 </resources>
