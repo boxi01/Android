@@ -1,7 +1,9 @@
 package tasks;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
+import com.example.myapplication.DashboardActivity;
 import com.example.myapplication.QuotationActivity;
 
 import java.io.IOException;
@@ -19,6 +21,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -76,7 +79,13 @@ public class MyHTTPAsyncTask extends AsyncTask<Void,Void, Quotation> {
             // As being a GET request, include the parameters on the URI
             builder.appendQueryParameter("method", "getQuote");
             builder.appendQueryParameter("format", "json");
-            builder.appendQueryParameter("lang", "en");
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(weakReference.get());
+            String qLang = settings.getString("language", "English");
+
+            if(qLang.equals("Russian"))
+                builder.appendQueryParameter("lang", "ru");
+            else
+                builder.appendQueryParameter("lang", "en");
 
             URL url = new URL(builder.toString());
             Log.d("debug", "Hello TEST "+url.toString())   ;

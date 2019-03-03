@@ -70,7 +70,7 @@ public class QuotationActivity extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    myQHolder.setQuotations(DatabaseExRoom.getInstance(QuotationActivity.this).databaseDao().getQuotations());
+                    myQHolder.setQuotations(Database.getInstance(QuotationActivity.this).getQuotations());
                 }
             }).start();
             Log.d("DEBUG", "Prawdzimwy sql q");
